@@ -36,7 +36,7 @@ public enum GameSymbol {
     }
 
     public static void printExistentSymbols() {
-        System.out.println("SYMBOLS:");
+        System.out.println("\n\nSYMBOLS:");
         for (GameSymbol symbol : GameSymbol.values()) {
             System.out.println(symbol + " - " + symbol.getValue());
         }

@@ -39,7 +39,14 @@ public class GameLogic {
         checkResult(player1Choice, player2Choice, game, versusBot);
     }
 
-    private static GameSymbol chooseOption() {
+    public static void checkResult(GameSymbol firstSymbol, GameSymbol secondSymbol, Game game, boolean versusBot) {
+        GameResult result = firstSymbol.getResult(secondSymbol);
+        incrementRecords(result, game);
+        String player2 = versusBot ? "BOT" : "Player 2";
+        System.out.println("\nPlayer 1 played " + firstSymbol.getValue() + " and " + player2 + " played " + secondSymbol.getValue() + ". It's a " + result + "!");
+    }
+
+    public static GameSymbol chooseOption() {
         Scanner scanner = ScannerReader.getInstance().getScanner();
         while (true) {
             System.out.println("Select a valid option: ");
@@ -48,13 +55,6 @@ public class GameLogic {
                 return GameSymbol.valueOf(option);
             }
         }
-    }
-
-    private static void checkResult(GameSymbol firstSymbol, GameSymbol secondSymbol, Game game, boolean versusBot) {
-        GameResult result = firstSymbol.getResult(secondSymbol);
-        incrementRecords(result, game);
-        String player2 = versusBot ? "BOT" : "Player 2";
-        System.out.println("\nPlayer 1 played " + firstSymbol.getValue() + " and " + player2 + " played " + secondSymbol.getValue() + ". It's a " + result + "!");
     }
 
     private static GameSymbol getBotSymbol() {

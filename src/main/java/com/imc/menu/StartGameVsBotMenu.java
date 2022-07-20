@@ -17,7 +17,7 @@ public class StartGameVsBotMenu extends GameMenu {
 
     @Override
     public boolean execute() {
-        System.out.println("--------------------------------\n" +
+        System.out.println("\n--------------------------------\n" +
                 "|         Game started         | \n" +
                 "--------------------------------");
         boolean stillPlaying = true;
@@ -43,11 +43,11 @@ public class StartGameVsBotMenu extends GameMenu {
     }
 
     private void printRecords(Game game) {
-        System.out.println("--------------------------"
+        System.out.println("\n\n--------------------------"
                 + "\nGames Played: " + game.getGamesPlayed()
-                + "\nNumber of Player Wins: " + game.getPlayer1Wins()
-                + "\nNumber of BOT wins: " + game.getPlayer2Wins()
+                + "\nPlayer's number of Wins: " + game.getPlayer1Wins()
+                + "\nBOT's number of Wins: " + game.getPlayer2Wins()
                 + "\nTies: " + game.getTies()
-                + "\n--------------------------");
+                + "\n--------------------------\n\n\n");
     }
 }
