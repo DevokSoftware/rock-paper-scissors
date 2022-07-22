@@ -3,8 +3,6 @@ package com.imc.menu;
 import com.imc.model.GameSymbol;
 import com.imc.util.ScannerReader;
 
-import java.util.Scanner;
-
 public class H2PMenu extends GameMenu {
     public static String MENU_OPTION = "2";
 
@@ -26,8 +24,7 @@ public class H2PMenu extends GameMenu {
         }
         System.out.println("To Start a new game against the computer you should press [1] in the Menu. Record of games played and respective results are displayed at the end of each game.");
         System.out.println("\nPress some key to get back to the Menu..");
-        Scanner scanner =  ScannerReader.getInstance().getScanner();
-        scanner.next();
+        ScannerReader.getInputValue();
         return true;
     }
 }

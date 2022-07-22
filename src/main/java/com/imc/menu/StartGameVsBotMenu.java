@@ -5,9 +5,6 @@ import com.imc.model.Game;
 import com.imc.model.GameSymbol;
 import com.imc.util.ScannerReader;
 
-
-import java.util.Scanner;
-
 public class StartGameVsBotMenu extends GameMenu {
     public static String MENU_OPTION = "1";
 
@@ -24,21 +21,23 @@ public class StartGameVsBotMenu extends GameMenu {
         Game game = new Game();
         while (stillPlaying) {
             GameSymbol.printExistentSymbols();
-            GameLogic.startGame(game, true);
+            GameLogic.startGameVsBot(game);
             printRecords(game);
-            stillPlaying = isToStillPlaying();
+            stillPlaying = isToStillPlaying(game);
         }
         return true;
     }
 
-    private boolean isToStillPlaying() {
+    private boolean isToStillPlaying(Game game) {
         System.out.println("\n1 - Just one more game." +
                 "\n2-Back To Menu.");
         while (true) {
-            Scanner scanner = ScannerReader.getInstance().getScanner();
-            String option = scanner.next();
+            String option = ScannerReader.getInputValue();
             if (option.equals("1")) return true;
-            if (option.equals("2")) return false;
+            if (option.equals("2")) {
+                printRecords(game);
+                return false;
+            }
         }
     }
 
@@ -48,6 +47,6 @@ public class StartGameVsBotMenu extends GameMenu {
                 + "\nPlayer's number of Wins: " + game.getPlayer1Wins()
                 + "\nBOT's number of Wins: " + game.getPlayer2Wins()
                 + "\nTies: " + game.getTies()
-                + "\n--------------------------\n\n\n");
+                + "\n--------------------------\n");
     }
 }

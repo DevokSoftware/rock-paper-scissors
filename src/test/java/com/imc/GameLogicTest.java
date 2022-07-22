@@ -5,59 +5,47 @@ import com.imc.model.GameSymbol;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
-
 public class GameLogicTest {
 
     @Test
     public void testPaperBeatsRock() {
         Game game = new Game();
-        GameLogic.checkResult(GameSymbol.P, GameSymbol.R, game, true);
-        Assert.assertEquals(game.getGamesPlayed(), 1);
-        Assert.assertEquals(game.getPlayer1Wins(), 1);
-        Assert.assertEquals(game.getPlayer2Wins(), 0);
-        Assert.assertEquals(game.getTies(), 0);
+        GameLogic.checkResult(GameSymbol.P, GameSymbol.R, game);
+        Assert.assertEquals(1, game.getGamesPlayed());
+        Assert.assertEquals(1, game.getPlayer1Wins());
+        Assert.assertEquals(0, game.getPlayer2Wins());
+        Assert.assertEquals(0, game.getTies());
     }
 
     @Test
     public void testScissorsLosesToRock() {
         Game game = new Game();
-        GameLogic.checkResult(GameSymbol.S, GameSymbol.R, game, true);
-        Assert.assertEquals(game.getGamesPlayed(), 1);
-        Assert.assertEquals(game.getPlayer1Wins(), 0);
-        Assert.assertEquals(game.getPlayer2Wins(), 1);
-        Assert.assertEquals(game.getTies(), 0);
+        GameLogic.checkResult(GameSymbol.S, GameSymbol.R, game);
+        Assert.assertEquals(1, game.getGamesPlayed());
+        Assert.assertEquals(0, game.getPlayer1Wins());
+        Assert.assertEquals(1, game.getPlayer2Wins());
+        Assert.assertEquals(0, game.getTies());
     }
 
     @Test
     public void testScissorsBeatsPaper() {
         Game game = new Game();
-        GameLogic.checkResult(GameSymbol.S, GameSymbol.P, game, true);
-        Assert.assertEquals(game.getGamesPlayed(), 1);
-        Assert.assertEquals(game.getPlayer1Wins(), 1);
-        Assert.assertEquals(game.getPlayer2Wins(), 0);
-        Assert.assertEquals(game.getTies(), 0);
+        GameLogic.checkResult(GameSymbol.S, GameSymbol.P, game);
+        Assert.assertEquals(1, game.getGamesPlayed());
+        Assert.assertEquals(1, game.getPlayer1Wins());
+        Assert.assertEquals(0, game.getPlayer2Wins());
+        Assert.assertEquals(0, game.getTies());
     }
 
     @Test
     public void testAllPossibleTies() {
         Game game = new Game();
-        GameLogic.checkResult(GameSymbol.S, GameSymbol.S, game, true);
-        GameLogic.checkResult(GameSymbol.P, GameSymbol.P, game, true);
-        GameLogic.checkResult(GameSymbol.R, GameSymbol.R, game, true);
-        Assert.assertEquals(game.getGamesPlayed(), 3);
-        Assert.assertEquals(game.getPlayer1Wins(), 0);
-        Assert.assertEquals(game.getPlayer2Wins(), 0);
-        Assert.assertEquals(game.getTies(), 3);
-    }
-
-    @Test
-    public void startGameAndChooseRockSymbol() {
-        InputStream in = System.in;
-        System.setIn(new ByteArrayInputStream("R\n".getBytes()));
-        GameSymbol symbol = GameLogic.chooseOption();
-        System.setIn(in);
-        Assert.assertEquals(symbol, GameSymbol.R);
+        GameLogic.checkResult(GameSymbol.S, GameSymbol.S, game);
+        GameLogic.checkResult(GameSymbol.P, GameSymbol.P, game);
+        GameLogic.checkResult(GameSymbol.R, GameSymbol.R, game);
+        Assert.assertEquals(3, game.getGamesPlayed());
+        Assert.assertEquals(0, game.getPlayer1Wins());
+        Assert.assertEquals(0, game.getPlayer2Wins());
+        Assert.assertEquals(3, game.getTies());
     }
 }

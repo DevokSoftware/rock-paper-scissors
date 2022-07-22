@@ -10,32 +10,16 @@ public class Game {
         return gamesPlayed;
     }
 
-    public void setGamesPlayed(int gamesPlayed) {
-        this.gamesPlayed = gamesPlayed;
-    }
-
     public int getPlayer1Wins() {
         return player1Wins;
-    }
-
-    public void setPlayer1Wins(int player1Wins) {
-        this.player1Wins = player1Wins;
     }
 
     public int getPlayer2Wins() {
         return player2Wins;
     }
 
-    public void setPlayer2Wins(int player2Wins) {
-        this.player2Wins = player2Wins;
-    }
-
     public int getTies() {
         return ties;
-    }
-
-    public void setTies(int ties) {
-        this.ties = ties;
     }
 
     public void incrementGamesPlayed(){

@@ -8,19 +8,16 @@ import com.imc.model.GameSymbol;
 import com.imc.util.ScannerReader;
 import org.apache.commons.lang3.EnumUtils;
 
-import java.util.Scanner;
-
 public class GameLogic {
     public static void initialize() {
         boolean stillPlaying = true;
         while (stillPlaying) {
             printHomepageMenu();
             MenuFactory menuFactory = new MenuFactory();
-            Scanner scanner = ScannerReader.getInstance().getScanner();
             GameMenu gameMenu = null;
             while (gameMenu == null) {
                 System.out.println("\nSelect an option:");
-                gameMenu = menuFactory.getMenu(scanner.next());
+                gameMenu = menuFactory.getMenu(ScannerReader.getInputValue());
             }
             stillPlaying = gameMenu.execute();
         }
@@ -33,24 +30,22 @@ public class GameLogic {
                 "\n3 - Exit");
     }
 
-    public static void startGame(Game game, boolean versusBot) {
+    public static void startGameVsBot(Game game) {
         GameSymbol player1Choice = chooseOption();
-        GameSymbol player2Choice = versusBot ? getBotSymbol() : chooseOption();
-        checkResult(player1Choice, player2Choice, game, versusBot);
+        GameSymbol player2Choice = getBotSymbol();
+        checkResult(player1Choice, player2Choice, game);
     }
 
-    public static void checkResult(GameSymbol firstSymbol, GameSymbol secondSymbol, Game game, boolean versusBot) {
-        GameResult result = firstSymbol.getResult(secondSymbol);
+    public static void checkResult(GameSymbol firstSymbol, GameSymbol secondSymbol, Game game) {
+        GameResult result = firstSymbol.beatsSymbol(secondSymbol);
         incrementRecords(result, game);
-        String player2 = versusBot ? "BOT" : "Player 2";
-        System.out.println("\nPlayer 1 played " + firstSymbol.getValue() + " and " + player2 + " played " + secondSymbol.getValue() + ". It's a " + result + "!");
+        System.out.println("\nPlayer 1 played " + firstSymbol.getValue() + " and BOT played " + secondSymbol.getValue() + ". It's a " + result + "!");
     }
 
     public static GameSymbol chooseOption() {
-        Scanner scanner = ScannerReader.getInstance().getScanner();
         while (true) {
             System.out.println("Select a valid option: ");
-            String option = scanner.next();
+            String option = ScannerReader.getInputValue();
             if (EnumUtils.isValidEnum(GameSymbol.class, option)) {
                 return GameSymbol.valueOf(option);
             }

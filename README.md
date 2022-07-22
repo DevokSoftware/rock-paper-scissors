@@ -27,7 +27,8 @@ java -jar target/rock-paper-scissors-game-1.0-jar-with-dependencies.jar
 
 ### How to Play
 After running the application a menu will be displayed in the console. 
-<img src="src/main/resources/assets/img/welcome.PNG" alt="drawing" style="width:700px;margin-left:auto;margin-right:auto"/>
+<br>
+<img src="src/main/resources/assets/img/welcome.PNG" alt="drawing" style="width:400px;margin-left:auto;margin-right:auto"/>
 
 Here, you can choose between the following options:
 1. Start a game against the Computer.
@@ -36,19 +37,24 @@ Here, you can choose between the following options:
 
 
 #### 1 - Start New Game [vs BOT]
-When a game is started, you need to choose your symbol. Simultaneously a random symbol will be chosen by the computer. 
-<img src="src/main/resources/assets/img/startGame.PNG" alt="start game" style="width:700px;margin-left:auto;margin-right:auto"/>
+When a game is started, you need to choose your symbol. Simultaneously a random symbol will be chosen by the computer.
+<br>
+<img src="src/main/resources/assets/img/startGame.PNG" alt="start game" style="width:300px;margin-left:auto;margin-right:auto"/>
+
 
 After select your symbol, result is printed in the console. Current game record is also displayed. You can still playing pressing [1] or [2] to get back to the Main Menu.
-<img src="src/main/resources/assets/img/result.PNG" alt="results" style="width:700px;margin-left:auto;margin-right:auto"/>
+<br>
+<img src="src/main/resources/assets/img/result.PNG" alt="results" style="width:400px;margin-left:auto;margin-right:auto"/>
 
 
 #### 2 - How To Play?
 Here you can get some help about the game and how you can play it.
+<br>
 <img src="src/main/resources/assets/img/h2p.PNG" alt="h2p" style="width:700px;margin-left:auto;margin-right:auto"/>
 
 
 #### 3 - Exit
 This option will exit the application.
-<img src="src/main/resources/assets/img/exit.PNG" alt="exit" style="width:700px;margin-left:auto;margin-right:auto"/>
+<br>
+<img src="src/main/resources/assets/img/exit.PNG" alt="exit" style="width:300px;margin-left:auto;margin-right:auto"/>
 
